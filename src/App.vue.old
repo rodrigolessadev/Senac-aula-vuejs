@@ -1,0 +1,100 @@
+<script setup>
+import { ref } from 'vue';
+const titulo = ref('Meu título dinâmico A');
+const numero = ref('')
+const nomesParaAdicionar;
+const adicionarNomes;
+
+function upper() {
+  titulo.value = titulo.value.toUpperCase();
+}
+
+function lower() {
+  titulo.value = titulo.value.toLocaleLowerCase();
+}
+// podemos utilizar o debugger dentro da funcao para fazer o Devtools ir direto para a linha quando apertar o botão.
+function inverter2() {
+  let textoInvertido = '';
+  for (let i = titulo.value.length - 1; i >= 0; i--) {
+    textoInvertido += titulo.value[i]
+  }
+  titulo.value = textoInvertido;
+}
+
+function inverter() {
+  titulo.value = titulo.value.split("").reverse().join("");
+}
+
+function contaLetra() {
+
+  numero.value = titulo.value.toLocaleLowerCase().split("a").length;
+  // const resultado = titulo;
+  // if resultado = typeof titulo === "number"? numero : 
+
+}
+
+function adicionarNomes() {
+  nomesParaAdicionar.value
+}
+
+</script>
+
+<template>
+  <!-- <div> -->
+  <!-- Reatividade -> quando muda a variável, o framework atualiza em tempo real na tela -->
+  <!-- <h3>{{ titulo }}</h3>
+    <div v-if="contaLetra">Quantidade de letras "a" {{ numero }}</div>
+    <button @click="upper()">To Upper Case</button>
+    <button @click="lower()">To lower Case</button>
+
+    <button @click="inverter()">Inverter o Título</button>
+    <button @click="inverter2()">Inverter o Título com for</button>
+
+    <button @click="contaLetra">Contar quantas letras "a", o título possui</button>
+
+  </div> -->
+
+  <ol>
+    <li v-for="n in nomes">{{ n }}</li>
+  </ol>
+  <br>
+  <input type="text"><button>Adicionar</button>
+  <br>
+
+  <table>
+    <tr>
+      <td>Nome</td>
+      <td>Cor</td>
+      <td>Valor</td>
+      <td>Avaliação</td>
+    </tr>
+    <tr v-for="c in carros">
+      <td>{{ c.nome }}</td>
+      <td>{{ c.cor }}</td>
+      <td>{{ c.valor }}</td>
+      <td v-if="c > 1500">
+        Preço Alto
+      </td>
+      <td v-if='c < 1500'>
+        Preço Baixo
+      </td>
+    </tr>
+  </table>
+</template>
+
+<style scoped>
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.vue:hover {
+  filter: drop-shadow(0 0 2em #42b883aa);
+}
+</style>
